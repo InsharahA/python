@@ -1,0 +1,7 @@
+val="sidra"
+x=-(len(val))
+new=""
+for i in range(-1,x-1,-1):
+   new+=val[i]
+
+print(new)
