@@ -1,0 +1,16 @@
+lisy=["a", "b", "c", "a", "b", "a"]
+di={}
+print(di)
+for i in lisy:
+   di[i]=0
+for i in lisy:
+   di[i]+=1
+print(di)
+
+great=0
+value=''
+for x in di:
+   if di.get(x)>great:
+      great=di.get(x)
+      value=x
+print(value)
