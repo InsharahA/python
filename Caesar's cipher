@@ -1,0 +1,49 @@
+#Julius Caesar protected his confidential information by encrypting it using a cipher. Caesar's cipher shifts each letter by a number of letters. If the shift takes #you past the end of the alphabet, just rotate back to the front of the alphabet. In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'caesarCipher' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. STRING s
+#  2. INTEGER k
+#
+
+def caesarCipher(s, k):
+    # Write your code here
+    result=''
+    if (k>26):
+        k=k%26
+    for i in range (len(s)):
+        if(s[i].isalpha()):
+            if((ord(s[i])+k)>90 and s[i].isupper()):
+             result= result + chr(64+abs(90-ord(s[i])-(k)))
+            elif ((ord(s[i])+k)>122 and s[i].islower()):
+                result= result + chr(96+abs(122-ord(s[i])-(k)))
+            else: result= result + chr(ord(s[i])+k)
+        else: 
+            result=result+s[i]
+    return result
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    s = input()
+
+    k = int(input().strip())
+
+    result = caesarCipher(s, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
